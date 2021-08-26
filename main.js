@@ -50,9 +50,9 @@ function draw()
         strokeWeight(1);
         fill("red");
         textSize(20);
-        strokeWeight(4);
         text(object_name+" "+percent+"%",objects[i].x+15,objects[i].y+15);
         noFill();
+        strokeWeight(4);
         stroke("green");
         rect(objects[i].x,objects[i].y,objects[i].width,objects[i].height);
     }
