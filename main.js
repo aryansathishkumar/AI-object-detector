@@ -1,7 +1,6 @@
-img = "";
 function preload()
 {
-    img = loadImage("dog_cat.jpg");
+    
 }
 status = "";
 percent = 0;
@@ -47,14 +46,13 @@ function draw()
     {
         percent= Math.floor(objects[i].confidence*100);
         object_name= objects[i].label;
-        strokeWeight(1);
-        stroke("red");
         fill("red");
         textSize(20);
-        text(object_name+" "+percent+"%",objects[i].x+20,objects[i].y+30);
+        text(object_name+" "+percent+"%",objects[i].x+15,objects[i].y+40);
+        document.getElementById("name").innerHTML = object_name;
         noFill();
-        strokeWeight(4);
-        stroke("green");
+        strokeWeight(3);
+        stroke("black");
         rect(objects[i].x,objects[i].y,objects[i].width,objects[i].height);
     }
     }
