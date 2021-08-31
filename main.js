@@ -8,7 +8,7 @@ objects = [];
 video_declare = "";
 function setup()
 {
-    canvas = createCanvas(450, 450);
+    canvas = createCanvas(310, 310);
     canvas.center();
     video = createCapture(VIDEO);
     video.hide();
@@ -26,7 +26,7 @@ function gotresult(error,results)
     if(error)
     {
         console.error(error);
-        window.alert("There is an error click on 'ok' button to wait for the web page working");
+        //window.alert("There is an error click on 'ok' button to wait for the web page working");
         object_detector.detect(video, gotresult);
     }
     else
@@ -39,20 +39,26 @@ function gotresult(error,results)
 }
 function draw()
 {
-    image(video, 0, 0, 450, 450);
+    image(video, 0, 0, 310, 310);
     if(status != "")
     {
+        r = random(255);
+        g = random(255);
+        b = random(255);
+
     for(i=0; i<objects.length; i++)
     {
         percent= Math.floor(objects[i].confidence*100);
         object_name= objects[i].label;
-        fill("red");
         textSize(20);
+        strokeWeight(1);
+        stroke("red");
+        fill("red")
         text(object_name+" "+percent+"%",objects[i].x+15,objects[i].y+40);
-        document.getElementById("name").innerHTML = object_name;
+        document.getElementById("name").innerHTML = objects.length;
         noFill();
         strokeWeight(3);
-        stroke("black");
+        stroke(r,g,b);
         rect(objects[i].x,objects[i].y,objects[i].width,objects[i].height);
     }
     }
