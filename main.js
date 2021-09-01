@@ -1,6 +1,6 @@
 function preload()
 {
-    
+    replay = loadSound("replay.mp3");
 }
 status = "";
 percent = 0;
@@ -45,9 +45,13 @@ function draw()
         r = random(255);
         g = random(255);
         b = random(255);
+    }    
 
     for(i=0; i<objects.length; i++)
     {
+        if(objects[i].label == "person")
+        {
+        replay.stop();
         percent= Math.floor(objects[i].confidence*100);
         object_name= objects[i].label;
         textSize(20);
@@ -60,6 +64,18 @@ function draw()
         strokeWeight(3);
         stroke(r,g,b);
         rect(objects[i].x,objects[i].y,objects[i].width,objects[i].height);
-    }
-    }
+        }
+        else
+        {
+            status = false;
+            play_back();
+        }
+    }  
+}
+function play_back()
+{
+    setTimeout(function()
+    {
+        replay.play();
+    })
 }
