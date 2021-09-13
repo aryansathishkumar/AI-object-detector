@@ -67,15 +67,7 @@ function draw()
         }
         else
         {
-            status = false;
-            play_back();
+            replay.play();
         }
     }  
-}
-function play_back()
-{
-    setTimeout(function()
-    {
-        replay.play();
-    })
 }
